@@ -1,0 +1,28 @@
+{
+  "name": "curancing",
+  "version": "1.0.0",
+  "description": "Mau beli kucing? sini aja cuy!",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranggakusuma/Curancing.git"
+  },
+  "author": "Rangga Kusuma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranggakusuma/Curancing/issues"
+  },
+  "homepage": "https://github.com/ranggakusuma/Curancing#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "pg": "^7.6.1",
+    "sequelize": "^4.41.2"
+  }
+}
