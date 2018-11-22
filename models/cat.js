@@ -6,12 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     TypeId: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     sold: DataTypes.INTEGER,
-    pic: DataTypes.STRING
+    pic: DataTypes.STRING,
+    gender: DataTypes.STRING
   }, {});
   Cat.associate = function(models) {
     // associations can be defined here
     Cat.belongsTo(models.Type)
     Cat.belongsToMany(models.User, {through: models.Transaction})
   };
+
+  
   return Cat;
 };

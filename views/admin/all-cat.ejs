@@ -1,0 +1,36 @@
+<%- include ./headerAdmin.ejs%>
+    <h2><strong>Data Kucing:</strong></h2>
+    <table class="table" id="tableCat">
+        <thead>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>price</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <%for (let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].age%></td>
+                    <td><%=data[i].price%></td>
+                    <!-- <td><%=data[i].sold%></td> -->
+                    <td>
+                        <%if (data[i].sold) { %>
+                            <b>Terjual</b>
+                        <%} else { %>
+                            <b>Ready</b>
+                        <%}%>
+                    </td>
+                    <td><%=data[i].jenis%></td>
+                    <td><a href="/admin/edit-cat/<%=data[i].id%>">Edit</a>  | <a href="/admin/delete-cat/<%=data[i].id%>">Delete</a></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+
+    
+<%- include ./footerAdmin.ejs%>  

@@ -1,0 +1,63 @@
+<%- include ./headerAdmin.ejs%>
+
+<h2><strong>Kucing Form:</strong> </h2>
+    <form action="/admin/edit-cat/<%=data.id%>" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Nama Kucing</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Nama kucing" required value="<%=data.name%>">
+            </div>
+            <!-- <div class="col-md-6">
+                <label for="picture">Gambar </label>
+                <input type="file" name="picture" id="picture"/ required>
+            </div> -->
+            <div class="col-md-6">
+                <label for="gender">Jenis Kelamin</label>
+                <select name="gender" id="gender" class="form-control" required>
+                    <% if (data.gender == 'male') { %>
+                        <option value="male" selected>Jantan</option>
+                        <option value="female">Betina</option>
+                    <%} else {%>
+                        <option value="male" >Jantan</option>
+                        <option value="female" selected>Betina</option>
+                    <%}%>
+                </select>          
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="age">Umur Kucing</label>
+                <input type="number" min="0" class="form-control" name="age" id="age" placeholder="Umur kucing" required value="<%=data.age%>">
+            </div>
+
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="price">Harga Kucing</label>
+                <input type="number" min="0" class="form-control" name="price" id="price" placeholder="Harga kucing" required value="<%=data.price%>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="type">Jenis Kucing</label>
+                <select name="type" id="type" class="form-control" required>
+                    <%for (let i = 0; i < data.allJenis.length; i++) {%>
+                        <%if (data.Type.id == data.allJenis[i].id) {%>
+                            <option value="<%=data.allJenis[i].id%>" selected><%=data.allJenis[i].name%></option>
+                        <%} else {%>
+                            <option value="<%=data.allJenis[i].id%>"><%=data.allJenis[i].name%></option>
+                        <%}%>
+                    <%}%>
+                </select>          
+            </div>
+        </div>
+
+        <div class="row">
+            <br>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+<%- include ./footerAdmin.ejs%>  

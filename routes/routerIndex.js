@@ -1,8 +1,10 @@
 const express = require('express')
+const middleWare = require('../middleware/adminLoginMW')
 const router = express.Router()
 
+
 router.get('/', (req, res) => {
-    res.send('halaman depan')
+    res.render('./index.ejs', {title: 'Home Page'})
 })
 
 
