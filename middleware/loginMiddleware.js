@@ -1,6 +1,6 @@
 let middleWare = function(req, res, next){
     if(req.session.userLogin) {
-        res.send('udah login')
+        res.redirect('/')
     } else {
         next()
     }

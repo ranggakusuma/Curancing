@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
     Cat.belongsToMany(models.User, {through: models.Transaction})
   };
 
-  
+  Cat.prototype.getPrice = function() {
+    let num = this.price
+    var array = num.toString().split('');
+    var index = -3;
+    while (array.length + index > 0) {
+        array.splice(index, 0, ',');
+        // Decrement by 4 since we just added another unit to the array.
+        index -= 4;
+    }
+    return 'RP. '+array.join('');
+  }
   return Cat;
 };
