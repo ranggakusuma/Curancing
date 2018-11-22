@@ -9,7 +9,7 @@ const routerCat = require('./routes/routerCat')
 const session = require('express-session')
 
 
-const PORT = 3001
+const PORT = 3000
 const app = express()
 
 app.set('view engine', 'ejs')
