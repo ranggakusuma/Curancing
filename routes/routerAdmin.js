@@ -18,7 +18,7 @@ router.get('/all-cat',  adminAccess, AdminController.allCat)
 router.get('/delete-cat/:id',  adminAccess, AdminController.deleteCat)
 router.get('/edit-cat/:id',  adminAccess, AdminController.editCatForm)
 router.post('/edit-cat/:id',  adminAccess, AdminController.editCatUpdate)
-
-
+router.get('/transaction', adminAccess, AdminController.transaction)
+router.get('/transaction/process/:id', adminAccess, AdminController.transactionProcess)
 
 module.exports = router

@@ -176,6 +176,49 @@ class AdminController {
                 res.send(err)
             });
     }
+
+    static transaction(req, res) {
+        Model.Transaction.findAll({
+            attributes: ['id', 'UserId', 'CatId','status','createdAt','updatedAt'],
+            include: [{
+                model: Model.User
+            }, {
+                model: Model.Cat
+            }],
+            order: [
+                ['updatedAt', 'DESC']
+            ]
+        })
+            .then((data) => {
+                let newData = []
+                data.forEach(element => {
+                    // console.log(element.dataValues.Cat.getPrice())
+                    element.dataValues.harga = element.dataValues.Cat.getPrice()
+                    newData.push(element.dataValues)
+                });
+                // res.send(newData)
+                res.render('./admin/adminTransaction.ejs', {data: newData})
+            }).catch((err) => {
+                res.send(err)
+            });
+    }
+
+    static transactionProcess(req, res) {
+        Model.Transaction.update({
+            status: 1
+        }, {
+            where: {
+                id : req.params.id
+            },
+            individualHooks: true
+        })
+            .then((data) => {
+                // res.send(data)
+                res.redirect('/admin/transaction')
+            }).catch((err) => {
+                res.send('error')
+            });
+    }
 }
 
 
