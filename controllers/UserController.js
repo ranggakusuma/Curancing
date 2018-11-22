@@ -1,4 +1,5 @@
 const Model = require('../models/index')
+const checkPassword = require('../helpers/checkPassword')
 
 class UserController {
     static registerForm(req, res) {
@@ -29,6 +30,51 @@ class UserController {
                 res.render('./pages/register/index.ejs', input)
             });
         }
+    }
+
+    static loginForm(req, res) {
+        res.render('./pages/login/login.ejs', {title: 'Login Form', info: []})
+    }
+
+    static loginUser(req, res) {
+        let input = {
+            title: 'Login Form',
+            info: []
+        }
+        Model.User.findOne({where: {
+            username: req.body.username
+        }})
+            .then((data) => {
+                if (data) {
+                    let passwordLogin = checkPassword(req.body.password, data.password)
+                    if (passwordLogin) {
+                        req.session.userLogin = {
+                            id: data.id,
+                            username: data.username,
+                            email: data.email,
+                            name: data.name
+                        }
+                        console.log(req.session)
+                        res.redirect('/')
+                    } else {
+                        input.info.push('Password Salah')
+                        res.render('./pages/login/login.ejs', input)
+                    }
+                } else {
+                    input.info.push('Username tidak ditemukan')
+                    res.render('./pages/login/login.ejs', input)
+                }
+            }).catch((err) => {
+                res.send(err)
+            });
+        
+    }
+
+    static logout(req, res) {
+        console.log(req.session, '=====')
+        req.session.userLogin = null
+        console.log(req.session, '++++')
+        res.send('destroy session')
     }
 }
 
