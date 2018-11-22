@@ -1,0 +1,54 @@
+<%- include ../../partials/header.ejs %>
+
+<%let row = Math.ceil(data.length/3 )
+    let counter = 0
+%>
+
+
+<hr>
+<%for (let i = 0; i < row; i++) {%>
+    <div class="row">
+        <%for (let j = 0; j < 3; j++) {%>
+        <div class="col-md-4">
+            <center>
+                <br>
+                <img src="<%=data[counter].pic%>" width="250px"><br>
+                <b></b><br>
+                <b><%=data[counter].price%></b><br>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td>: <%=data[counter].name%></td>
+                    </tr>
+                    <tr>
+                        <td>Jenis</td>
+                        <td>: <%=data[counter].jenis%></td>
+                    </tr>
+                    <tr>
+                        <td>Umur</td>
+                        <td>: <%=data[counter].age%></td>
+                    </tr>
+                    <tr>
+                        <td>Kelamin</td>
+                        <td>: <%=data[counter].gender%></td>
+                    </tr>
+                </table>
+                <%if (!data[counter].sold)  {%>
+                    <a href="/cat/beli/<%=data[counter].id%>" type="button" class="btn btn-success">Adopsi</a>
+                <%} else { %>
+                    Telah diadopsi  
+                <%}%>
+            </center>
+        </div>
+        <%if (counter >= data.length-1) {
+            break
+        }%>
+        <%  counter += 1 
+           
+        }%>
+    </div>
+    <hr>
+<%}%>
+
+
+<%- include ../../partials/footer.ejs %>

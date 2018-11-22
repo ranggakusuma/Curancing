@@ -1,0 +1,53 @@
+<%- include ./headerAdmin.ejs%>
+
+<h2><strong>Kucing Form:</strong> </h2>
+    <form action="/admin/add-cat" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Nama Kucing</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Nama kucing" required>
+            </div>
+            <div class="col-md-6">
+                <label for="picture">Gambar </label>
+                <input type="file" name="picture" id="picture"/ required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="age">Umur Kucing</label>
+                <input type="number" min="0" class="form-control" name="age" id="age" placeholder="Umur kucing" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="gender">Jenis Kelamin</label>
+                <select name="gender" id="gender" class="form-control" required>
+                    <option value="male">Jantan</option>
+                    <option value="female">Betina</option>
+                </select>          
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="price">Harga Kucing</label>
+                <input type="number" min="0" class="form-control" name="price" id="price" placeholder="Harga kucing" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="type">Jenis Kucing</label>
+                <select name="type" id="type" class="form-control" required>
+                    <%for (let i = 0; i < data.length; i++) {%>
+                        <option value="<%=data[i].id%>"><%=data[i].name%></option>
+                    <%}%>
+                </select>          
+            </div>
+        </div>
+
+        <div class="row">
+            <br>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+<%- include ./footerAdmin.ejs%>  

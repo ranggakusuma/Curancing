@@ -1,0 +1,48 @@
+<%- include ../../partials/header.ejs %>
+
+<h2>Informasi Detail</h2>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <img src="/<%=data.pic%>" width="300vh">
+    </div>
+
+    <div class="col-md-8">
+        <h4>
+            <br>
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>: <%=data.name%></td>
+            </tr>
+            <tr>
+                <td>Ras</td>
+                <td>: <%=data.jenis%></td>
+            </tr>
+            <tr>
+                <td>Umur</td>
+                <td>: <%=data.age%></td>
+            </tr>
+            <tr>
+                <td>J. Kelamin</td>
+                <td>: <%=data.gender%></td>
+            </tr>
+        </table>
+        </h4>
+    </div>
+</div>
+<hr>
+<div class="row">
+
+    <div class="col-md-12">
+        <center>
+            <h1>
+                <%=data.harga%>
+            </h1>
+            <a href="/cat/checkout/<%=data.id%>" class="btn btn-success btn-lg"  onclick="return confirm('Yakin adopsi kucing ini?')">Checkout</a>
+        </center>
+    </div>
+</div>
+
+
+<%- include ../../partials/footer.ejs %>
