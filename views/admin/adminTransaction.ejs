@@ -1,0 +1,35 @@
+<%- include ./headerAdmin.ejs%>
+
+<h2>Informasi Transaksi</h2>
+<hr>
+
+<table class="table table-hover">
+    <thead>
+        <th>No.</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Cat Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </thead>
+    <%for (let i = 0; i < data.length; i++) {%>
+        <tr>
+            <td><%=i+1%></td>
+            <td><%=data[i].User.username%></td>
+            <td><%=data[i].User.name%></td>
+            <td><%=data[i].User.email%></td>
+            <td><%=data[i].Cat.name%></td>
+            <td><%=data[i].harga%></td>
+            <td align="center">
+                <%if (!data[i].status) {%>
+                    <a href="/admin/transaction/process/<%=data[i].id%>" class="btn btn-primary btn-xs">Process</a>
+                <%} else { %>
+                    <i class="pe-7s-check" style="font-size: 6vh"></i>
+                <%}%>
+            </td>
+        </tr>
+    <%}%>
+</table>
+
+<%- include ./footerAdmin.ejs%>  
